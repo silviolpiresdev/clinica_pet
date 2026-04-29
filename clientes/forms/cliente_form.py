@@ -1,9 +1,11 @@
 from django import forms
-
+from django.forms import DateInput
 from ..models import Cliente
 
-
-class ClientForm(forms.ModelForm):
+class ClienteForm(forms.ModelForm):
     class Meta:
         model = Cliente
         fields = ['nome', 'email', 'data_nascimento', 'cpf', 'profissao']
+        widgets = {
+            'data_nascimento': DateInput(attrs={'type': 'date'})
+        }
