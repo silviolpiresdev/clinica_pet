@@ -3,14 +3,18 @@ from ..forms.cliente_form import ClienteForm
 from ..forms.endereco_form import EnderecoClienteForm
 from ..entidades import cliente, endereco
 from ..services import cliente_service, endereco_service
+from pets.services import pet_service
 
 def listar_clientes(request):
     clientes = cliente_service.listar_clientes()
     return render(request, 'clientes/lista_clientes.html', {'clientes': clientes})
 
+
 def listar_cliente_id(request, id):
     cliente = cliente_service.listar_cliente_id(id)
-    return render(request, 'clientes/lista_cliente.html', {'cliente': cliente})
+    pets = pet_service.listar_pets(id)
+    return render(request, 'clientes/lista_cliente.html', {'cliente': cliente, 'pets': pets})
+
 
 def cadastrar_cliente(request):
     if request.method == "POST":
