@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'consultas',
     'clientes',
+    'funcionarios',
     'pets',
     'django_adminlte',
 ]
