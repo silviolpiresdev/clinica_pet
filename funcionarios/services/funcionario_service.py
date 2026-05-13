@@ -1,11 +1,13 @@
-from ..models import Funcionario
-
+from funcionarios.models import Funcionario
 
 def listar_funcionarios():
-    funcionarios = Funcionario.objects.all()
-    return funcionarios
-
+    return Funcionario.objects.all()
 
 def cadastrar_funcionario(funcionario):
-    Funcionario.objects.create(nome=funcionario.nome, nascimento=funcionario.nascimento,
-                               cargo=funcionario.cargo)
+    Funcionario.objects.create(
+        nome=funcionario.nome,
+        nascimento=funcionario.nascimento,
+        cargo=funcionario.cargo,
+        username=funcionario.username,
+        password=funcionario.password
+    )
