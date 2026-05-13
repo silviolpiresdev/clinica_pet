@@ -1,37 +1,24 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Listagem de Consultas
+Consulta
 {% endblock title %}
 
 {% block content %}
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">Listagem de Consultas</h3>
+        <h3 class="box-title">Detalhes da Consulta</h3>
     </div>
-
     <div class="box-body">
-        <table class="table">
-            <thead>
-               <tr>
-                   <th>Data</th>
-                   <th>Motivo</th>
-                   <th>Peso Atual</th>
-               </tr>
-            </thead>
-            <tbody>
-                {% for c in consulta %}
-                <tr>
-                    <td>{{ c.data }}</td>
-                    <td>{{ c.motivo_consulta }}</td>
-                    <td>{{ c.peso_atual }} kg</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <p><b>Data:</b> {{ consulta.data }}</p>
+        <p><b>Motivo:</b> {{ consulta.motivo_consulta }}</p>
+        <p><b>Peso atual:</b> {{ consulta.peso_atual }} kg</p>
+        <p><b>Medicamento atual:</b> {{ consulta.medicamento_atual }}</p>
+        <p><b>Medicamentos prescritos:</b> {{ consulta.medicamentos_prescritos }}</p>
+        <p><b>Exames prescritos:</b> {{ consulta.exames_prescritos }}</p>
         <hr>
-        <a href="{% url 'cadastrar_consulta' consulta.first.pet.id %}">
-            <button class="btn btn-primary">Nova Consulta</button>
+        <a href="{% url 'enviar_email_consulta' consulta.id %}">
+            <button class="btn btn-primary">Enviar Email</button>
         </a>
     </div>
 </div>

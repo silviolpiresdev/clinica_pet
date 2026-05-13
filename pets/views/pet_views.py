@@ -3,6 +3,7 @@ from ..forms import pet_forms
 from ..entidades import pet
 from ..services import pet_service
 from clientes.services import cliente_service
+from consultas.services import consulta_pet_service
 
 def inserir_pet(request, id):
     if request.method == "POST":
@@ -20,9 +21,11 @@ def inserir_pet(request, id):
         form_pet = pet_forms.PetForm()
     return render(request, 'pets/form_pet.html', {'form_pet': form_pet})
 
+
 def listar_pet_id(request, id):
     pet_obj = pet_service.listar_pet_id(id)
-    return render(request, 'pets/lista_pet.html', {'pet': pet_obj})
+    consultas = consulta_pet_service.listar_consultas(id)
+    return render(request, 'pets/lista_pet.html', {'pet': pet_obj, 'consultas': consultas})
 
 def editar_pet(request, id):
     pet_antigo = pet_service.listar_pet_id(id)
